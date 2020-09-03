@@ -1,0 +1,10 @@
+type Error {
+  clientError: Boolean
+  serverError: Boolean
+  errorCode: Int
+  redirect: Boolean
+  text: String
+  method: String
+  path: String
+  hint: String
+}

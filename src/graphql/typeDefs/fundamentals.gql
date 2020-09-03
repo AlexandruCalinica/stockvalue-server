@@ -1,0 +1,44 @@
+type Fundamental {
+  id: String
+  statement_code: String
+  fiscal_year: Int
+  fiscal_period: String
+  type: String
+  start_date: Date
+  end_date: Date
+  filing_date: Date
+  is_latest: Boolean
+  company: CompanySummary
+}
+
+type DataTagSummary {
+  id: String
+  name: String
+  tag: String
+  parent: String
+  sequence: Int
+  factor: String
+  balance: String
+  unit: String
+}
+
+type StandardizedFinancial {
+  data_tag: DataTagSummary
+  value: Float
+}
+
+type ApiResponseStandardizedFinancial {
+  standardized_financials: [StandardizedFinancial]
+  fundamental: Fundamental
+  nextPage: String
+}
+
+type Query {
+  lookupFundamental(
+    identifier: String!
+    statementCode: String
+    fiscalYear: Int
+    fiscalPeriod: String
+  ): Fundamental
+  getFundamentalStandardizedFinancials(id: String!): ApiResponseStandardizedFinancial
+}

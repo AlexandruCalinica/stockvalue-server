@@ -1,0 +1,48 @@
+type CompanySummary {
+  id: String
+  ticker: String
+  name: String
+  lei: String
+  cik: String
+}
+
+type DataTagText {
+  identifier: String
+  tag: String
+  value: String
+  error: Error
+}
+
+type DataTagNumber {
+  identifier: String
+  tag: String
+  value: Float
+  error: Error
+}
+
+type HistoricalData {
+  date: Date
+  value: Float
+}
+
+type ApiResponseCompanyHistoricalData {
+   historical_data: [HistoricalData]
+   company: CompanySummary
+   next_page: String
+}
+
+type Query {
+  getCompanyTagText(identifier: String!, tag: String!): DataTagText
+  getCompanyTagNumber(identifier: String!, tag: String!): DataTagNumber
+  getCompanyHistoricalData(
+    identifier: String!, 
+    tag: String!, 
+    frequency: String, 
+    type: String, 
+    startDate: Date, 
+    endDate: Date, 
+    sortOrder: String, 
+    pageSize: Int, 
+    nextPage: String
+  ): ApiResponseCompanyHistoricalData
+}

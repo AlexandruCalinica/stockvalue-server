@@ -1,0 +1,42 @@
+{
+  "name": "stockvalue-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Alexandru Calinica",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./ -s",
+    "build": "npm run clean && npm run build-babel",
+    "start": "node index.js",
+    "dev": "nodemon --exec babel-node index.js"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/node": "^7.10.5",
+    "@babel/polyfill": "^7.10.4",
+    "@babel/preset-env": "^7.11.0",
+    "@tensorflow/tfjs-node": "^2.3.0",
+    "@tensorflow/tfjs-node-gpu": "^2.3.0",
+    "apollo-server-express": "^2.16.1",
+    "chokidar": "3",
+    "core-js": "3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql": "14",
+    "graphql-tools": "^6.0.18",
+    "intrinio-sdk": "^5.6.1",
+    "sequelize": "^6.3.4",
+    "subscriptions-transport-ws": "^0.9.18"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "peerDependencies": {
+    "core-js": "^3.6.5",
+    "subscriptions-transport-ws": "^0.9.18"
+  }
+}
